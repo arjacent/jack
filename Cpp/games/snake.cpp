@@ -16,6 +16,7 @@ eDirection dir;
 int tailX[100], tailY[100];
 int tailSize;
 int frame;
+char keyPressed;
 
 
 void fruit()
@@ -28,7 +29,7 @@ void setup()
 {
     //win = newwin(height, width, 0, 0);
     gameOver = false;
-    dir = STOP;
+    dir = DOWN;
     snakeX = width / 2;
     snakeY = height / 2;
     fruit();
@@ -57,7 +58,7 @@ void draw()
             }
             else if (x == fruitX && y == fruitY)
             {
-                printw("F");
+                printw("x");
             }
             else 
             {
@@ -82,7 +83,7 @@ void draw()
 
 void input() 
 {
-    switch(getchar()) 
+    switch(getch()) 
     {
         case 'a':
             dir = LEFT;
@@ -172,6 +173,8 @@ int main()
 
     
     initscr();  // init curses
+    timeout(500);
+    
     //cbreak();  // one char
     noecho();  // don't spit out char    
     setup();
